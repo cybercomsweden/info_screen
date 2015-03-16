@@ -1,0 +1,9 @@
+{
+  "name": "cybercom-info-screen",
+  "version": "0.0.1",
+  "description": "Info Screen for displaying news and info at Cybercom Malmö",
+  "dependencies": {
+    "express": "latest",
+    "socket.io": "latest"
+  }
+}

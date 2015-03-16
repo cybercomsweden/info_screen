@@ -1,0 +1,16 @@
+/* Full Screen */
+html, body {
+	margin: 0;
+	height: 100%;
+}
+
+/* Default values for smooth apperance... */
+
+p, h1 {
+	font-family: "Verdana", Verdana, sans-serif;
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+}

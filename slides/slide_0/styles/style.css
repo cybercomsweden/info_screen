@@ -2,3 +2,9 @@ h1 {
 	color: red;
 	margin: 25px;
 }
+
+img {
+	width: 500px;
+	height: auto;
+	overflow: hidden;
+}

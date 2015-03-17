@@ -1,16 +1,14 @@
 var fs = require('fs');
 
-//
+// ------- Constructor
 
 var currentSlide = 0;
 var nbrOfSlides = 0;
 var pages = [];
 
-//
-
 readPages();
 
-////////////////////////////
+// -------
 
 function readPages(){
 
@@ -18,11 +16,23 @@ function readPages(){
 	fs.readdir(currentDir, function(err, dir){
 		if(err) console.error(err);
 
+		console.log("Pages Available:");
 		for(var i = 0; i < dir.length; i++){
 			if(dir[i].indexOf('slide') > -1){ //contains()
 				pages[nbrOfSlides++] = "slides/" + dir[i] + '/page.html';
+				console.log("{ " + pages[ nbrOfSlides - 1] + " }");
 			}
-			console.log("Pauge: " + pages);
 		}
 	});
+}
+
+exports.currentSlide = function(){
+	return pages[currentSlide]
+}
+
+exports.nextSlide = function(){
+	console.log("Slide [" + currentSlide +"]");
+	var slide = pages[currentSlide++];
+	if(currentSlide == nbrOfSlides) currentSlide = 0;
+	return slide;
 }

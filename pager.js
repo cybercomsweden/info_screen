@@ -31,8 +31,8 @@ exports.currentSlide = function(){
 }
 
 exports.nextSlide = function(){
+	if(++currentSlide == nbrOfSlides) currentSlide = 0;
 	console.log("Slide [" + currentSlide +"]");
-	var slide = pages[currentSlide++];
-	if(currentSlide == nbrOfSlides) currentSlide = 0;
+	var slide = pages[currentSlide];
 	return slide;
 }

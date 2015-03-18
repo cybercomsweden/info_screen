@@ -17,7 +17,7 @@ http.listen(3000, function(){
 
 io.on('connection', function(socket){
 	console.log("connected... " + socket.id);
-	socket.emit('page slide', pager.currentSlide());
+	socket.emit('first slide', pager.currentSlide());
 });
 
 function emitNextSlide(){
@@ -26,4 +26,4 @@ function emitNextSlide(){
 
 // -- Do Stuff! --
 
-setInterval(emitNextSlide, 3500);
+setInterval(emitNextSlide, 5000);

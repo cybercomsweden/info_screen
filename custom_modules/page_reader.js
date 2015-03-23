@@ -14,6 +14,8 @@ exports.callback;
 
 function readingDone(){
 	console.log('(' + NbrOfPages + ') Pages read.');
+
+	//add all slides to slideshow
 	if(exports.readingDone != null)
 		exports.readingDone();
 	for(category in holder){
@@ -22,7 +24,6 @@ function readingDone(){
 			slideShow.push(container.pages[i]);
 		}
 	}
-	// console.log(slideShow);
 }
 
 exports.readPages = function(root){
@@ -59,20 +60,6 @@ function readDir(absPath, category){
 			}
 		}
 	});
-}
-
-exports.currentSlideRef = function(){
-	return slideShow[currentSlide]
-}
-
-exports.nextSlideRef = function(){
-	if(++currentSlide == NbrOfPages) currentSlide = 0; // TODO
-	console.log("[Next Slide] Slide (" + currentSlide + ")");
-	return slideShow[currentSlide];
-}
-
-exports.getPageHolder = function(){
-	return holder;
 }
 
 function createPageObject(ref, category){
@@ -119,6 +106,20 @@ function createPageObject(ref, category){
 		if(NbrOfPages == NbrOfFilesRead)
 			readingDone()
 	});
+}
+
+exports.currentSlideRef = function(){
+	return slideShow[currentSlide]
+}
+
+exports.nextSlideRef = function(){
+	if(++currentSlide == NbrOfPages) currentSlide = 0; // TODO
+	console.log("[Next Slide] Slide (" + currentSlide + ")");
+	return slideShow[currentSlide];
+}
+
+exports.getPageHolder = function(){
+	return holder;
 }
 
 

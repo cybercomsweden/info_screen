@@ -1,10 +1,8 @@
-/* Full Screen */
 html, body {
 	margin: 0;
 	height: 100%;
+	overflow: hidden;
 }
-
-/* Default values for smooth apperance... */
 
 p, h1 {
 	font-family: "Verdana", Verdana, sans-serif;
@@ -21,13 +19,8 @@ iframe {
 	margin-left: 100%;
 }
 
-/*#frameA {
-	position: relative;
-	float: left;
-}
-*/
 div {
 	height: 100%;
 	width: 100%;
-	/*overflow: hidden;*/
+	overflow: hidden;
 }

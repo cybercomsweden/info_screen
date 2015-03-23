@@ -48,6 +48,7 @@ socket.on('page slide', function(page){
 	frames.getFrame('active')		.animate({'margin-left': '-=100%'}, 2000, 'easeInOutExpo');
 	frames.getFrame('not-active')	.animate({'margin-left': '-=100%'}, 2000, 'easeInOutExpo', function(){
 		frames.getFrame('not-active').css('margin-left', '100%');
+		frames.newSource('', 'not-active');
 	});
 	frames.notifyNewActive();
 

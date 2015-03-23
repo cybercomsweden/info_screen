@@ -3,22 +3,9 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
-var pager = require('./custom_modules/dir_reader');
+var pager = require('./custom_modules/page_reader');
 
-pager.readingDone = function(){
 
-	// var pages = pager.getPageHolder();
-	// console.log(pages);
-	// for(var category in pages){
-	// 	var container = pages[category];
-	// 	console.log(category);
-	// 	var conPages = container.pages;
-	// 	console.log(conPages);
-		// for(var j = 0; j < container.pages.length; j++){
-		// 	console.log(container.pages[j]);
-		// }
-	// }
-}
 
 app.use('/slideshow', express.static(__dirname + '/slideshow'));
 // app.use('/', express.static(__dirname + '/'));
@@ -48,5 +35,8 @@ http.listen(3000, function(){
 // -- Do Stuff! --
 
 pager.readPages(__dirname);
+pager.readingDone = function(){
+	// TODO ?
+}
 
 setInterval(emitNextSlide, 10000);

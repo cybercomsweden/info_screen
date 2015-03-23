@@ -1,5 +1,6 @@
 # Cybercom Information Screen
-An info screen using node and html technologies for internal use
+An info screen using node and html technologies for internal use.
+{Will be extended with more features to become an information portal aswell}
 
 This is a Node based project. To be able to run this you'll need to install "Node.js" and its package manager, "npm". Because of the .ignore-file the modules needed for projects are discarded in pull/push -s. So, to run this you need to install dependencies with npm and run with node.js.
 

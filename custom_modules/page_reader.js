@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var currentSlide = 0;
 var holder = [];
-var slideShow = [];
+var slideshow = [];
 var NbrOfPages = 0;
 var NbrOfFilesRead = 0;
 
@@ -14,15 +14,19 @@ exports.callback;
 
 function readingDone(){
 	console.log('(' + NbrOfPages + ') Pages read.');
+
+	//add all slides to slideshow
 	if(exports.readingDone != null)
 		exports.readingDone();
 	for(category in holder){
 		var container = holder[category];
 		for(i in container.pages){
-			slideShow.push(container.pages[i]);
+			slideshow.push(container.pages[i]);
 		}
 	}
-	// console.log(slideShow);
+	console.log(holder);
+	console.log(holder['abw']);
+
 }
 
 exports.readPages = function(root){
@@ -59,20 +63,6 @@ function readDir(absPath, category){
 			}
 		}
 	});
-}
-
-exports.currentSlideRef = function(){
-	return slideShow[currentSlide]
-}
-
-exports.nextSlideRef = function(){
-	if(++currentSlide == NbrOfPages) currentSlide = 0; // TODO
-	console.log("[Next Slide] Slide (" + currentSlide + ")");
-	return slideShow[currentSlide];
-}
-
-exports.getPageHolder = function(){
-	return holder;
 }
 
 function createPageObject(ref, category){
@@ -119,6 +109,20 @@ function createPageObject(ref, category){
 		if(NbrOfPages == NbrOfFilesRead)
 			readingDone()
 	});
+}
+
+exports.currentSlideRef = function(){
+	return slideshow[currentSlide]
+}
+
+exports.nextSlideRef = function(){
+	if(++currentSlide == NbrOfPages) currentSlide = 0; // TODO
+	console.log("[Next Slide] Slide (" + currentSlide + ")");
+	return slideshow[currentSlide];
+}
+
+exports.getPageHolder = function(){
+	return holder;
 }
 
 

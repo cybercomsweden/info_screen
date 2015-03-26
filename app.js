@@ -4,6 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
 var pager = require('./custom_modules/page_reader');
+var resources = require('./custom_modules/resource_module');
 
 
 
@@ -21,11 +22,21 @@ app.get('/slideshow', function(req, res){
 
 io.on('connection', function(socket){
 	console.log("connected... " + socket.id);
-	socket.emit('first slide', pager.currentSlideRef().path);
+	socket.emit('first slide', {
+				page: pager.currentSlideRef().path,
+				news: resources.currentNews(),
+				color: resources.currentColor()
+			}
+		);
 });
 
 function emitNextSlide(){
-	io.emit('page slide', pager.nextSlideRef().path);
+	io.emit('page slide', {
+			page: pager.nextSlideRef().path,
+			news: resources.nextNews(),
+			color: resources.nextColor()
+		}
+	);
 }
 
 http.listen(3000, function(){

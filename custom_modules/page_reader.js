@@ -109,21 +109,13 @@ function createPageObject(ref, category){
 }
 
 exports.currentSlideRef = function(){
-<<<<<<< HEAD:custom_modules/page_reader.js
-	return slideshow[currentSlide]
-=======
-	return slideShow[currentSlide]
->>>>>>> 67d6dea9f350a78f1a1c7c37fc1c6d4c0d3144d0:custom_modules/page_reader.js
+	return slideshow[currentSlide];
 }
 
 exports.nextSlideRef = function(){
 	if(++currentSlide == NbrOfPages) currentSlide = 0; // TODO
 	console.log("[Next Slide] Slide (" + currentSlide + ")");
-<<<<<<< HEAD:custom_modules/page_reader.js
 	return slideshow[currentSlide];
-=======
-	return slideShow[currentSlide];
->>>>>>> 67d6dea9f350a78f1a1c7c37fc1c6d4c0d3144d0:custom_modules/page_reader.js
 }
 
 exports.getPageHolder = function(){

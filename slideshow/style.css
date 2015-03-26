@@ -1,26 +1,144 @@
-html, body {
+* {
+		/* Make padding WORK*/
+	box-sizing: border-box;   
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+
 	margin: 0;
+	padding: 0;
+
+	-webkit-margin-before: 0em;
+  	-webkit-margin-after: 0em;
+  	-webkit-margin-start: 0px;
+  	-webkit-margin-end: 0px;
+}
+
+html, body {
 	height: 100%;
+	width: 100%;
 	overflow: hidden;
 }
 
-p, h1 {
+p, h1, h2, h3 {
 	font-family: "Verdana", Verdana, sans-serif;
 }
 
 iframe {
 	height: 100%;
 	width: 100%;
-	position: absolute;
-	float: left;
 }
 
-#frameB {
+/* Used for the sliding bit */
+#frameContainerB {
 	margin-left: 100%;
 }
 
-div {
-	height: 100%;
+#slidingFrames {
+	height: 85%;
 	width: 100%;
 	overflow: hidden;
 }
+
+.frameContainer {
+	position: absolute;
+	background-color: gray;
+	height: 85%;
+	width: 100%;
+	float: left;
+}
+
+#slidingNews {
+	width: 100%;
+	height: 15%;
+	overflow: hidden;
+}
+
+.newsBanner {
+    height: 15%;
+    width: 100%;
+
+    float: left;
+    position:absolute;
+}
+
+#newsBannerB{
+	margin-left: -100%;
+}
+
+
+.newsContainer {
+    height: 100%;
+    width: 50%;
+    float: left;
+    position:relative;
+    display:inline-block;
+}
+.innerNews {
+    height: 80%;
+    width: 80%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.newsImageContainer {
+    height: 80%;
+    float: left;
+    position:relative;
+    display:inline-block;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.newsTextContainer {
+    height: 80%;
+    width: auto;
+    color: white;
+    overflow: hidden;
+    padding-left: 10px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.newsTextContainer > h2 {
+    padding-left: 18px;
+}
+.newsTextContainer > p {
+	padding-left: 8px;
+    margin-top: 6px;
+    height: 3.6em; /* exactly three lines */
+    overflow: hidden;
+
+}
+.newsImage {
+    height:100%;
+    display:block;
+    -webkit-transform: translate(0, 0);
+    /*border: 7px solid white;*/
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    box-sizing:border-box;
+}
+
+#clock {
+	position: absolute;
+	text-align: center;
+	margin-top: 5%;
+	right: 0px;
+	background-color: rgb(237, 123, 1);
+	width: 160px;
+	height: 60px;
+	padding-top: 3px;
+	color: white;
+  }
+
+#clock #time {
+	font-size: 150%;
+}
+#clock #date {
+	font-size: 110%;
+}
+
+

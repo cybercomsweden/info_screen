@@ -1,3 +1,7 @@
+body {
+	background-image: url("../images/ocean.jpg");
+}
+
 h1 {
 	color: red;
 	margin: 25px;

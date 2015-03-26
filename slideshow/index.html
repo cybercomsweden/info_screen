@@ -4,28 +4,98 @@
 	<title>I am a Info Screen</title>
 </head>
 <body>
-<div class="container">
+	<div id="slidingFrames">
 
-<!-- Could have header +/ footer, but then it would have to be assigned a percentage of the pages height-->
-		<iframe
-			id="frameA"
-			frameborder="0"
-			scrolling="no"
-		></iframe>
+		<div id="frameContainerA" class="frameContainer">
+			<iframe
+				id="frameA"
+				frameborder="0"
+				scrolling="no"
+			></iframe>
+		</div>
+
+		<div id="frameContainerB" class="frameContainer">
+			<iframe
+				id="frameB"
+				frameborder="0"
+				scrolling="no"
+			></iframe>
+		</div>
+
+		<div id="clock">
+			<p id="time">12:34</p>
+			<p id="date">tisdag 8, mar</p>
+		</div>
+	</div>
+
+	<div id="slidingNews">
+		
+		<div class="newsBanner" id="newsBannerA">
+
+		    <div class="newsContainer">
+		        <div class="innerNews">
+		            <div class="newsImageContainer">
+		                <img id="newsImageLeftA" class="newsImage" src="http://beerhold.it/500/500" alt="Beerhold.it" />
+		            </div>
+		            <div class="newsTextContainer">
+	                 	<h2 id="newsTitleLeftA">1</h2>
+
+		                <p id="newsTextLeftA">I have such important news to tell people, it's amazing, I have such important news to tell people, it's amazing, I have such important news to tell people, it's amazing, I have such important news to tell people, it's ama2zing and also I enjoy hats. Like a lot. A lot A lot, that much</p>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="newsContainer">
+		        <div class="innerNews">
+		            <div class="newsImageContainer">
+		                <img id="newsImageRightA" class="newsImage" src="http://beerhold.it/100/100" alt="Beerhold.it" />
+		            </div>
+		            <div class="newsTextContainer">
+		                 <h2 id="newsTitleRightA">2</h2>
+
+		                <p id="newsTextRightA">I have such important news to tell people, it's amazing</p>
+		            </div>
+		        </div>
+		    </div>
+
+	    </div>
+	    <div class="newsBanner" id="newsBannerB">
+
+		    <div class="newsContainer">
+		        <div class="innerNews">
+		            <div class="newsImageContainer">
+		                <img id="newsImageLeftB" class="newsImage" src="http://beerhold.it/500/500" alt="Beerhold.it" />
+		            </div>
+		            <div class="newsTextContainer">
+	                 	<h2 id="newsTitleLeftB">3</h2>
+
+		                <p id="newsTextLeftB">I have such important news to tell people, it's amazing, I have such important news to tell people, it's amazing, I have such important news to tell people, it's amazing, I have such important news to tell people, it's ama2zing and also I enjoy hats. Like a lot. A lot A lot, that much</p>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="newsContainer">
+		        <div class="innerNews">
+		            <div class="newsImageContainer">
+		                <img id="newsImageRightB" class="newsImage" src="http://beerhold.it/100/100" alt="Beerhold.it" />
+		            </div>
+		            <div class="newsTextContainer">
+		                 <h2 id="newsTitleRightB">4</h2>
+
+		                <p id="newsTextRightB">I have such important news to tell people, it's amazing</p>
+		            </div>
+		        </div>
+		    </div>
+	    </div>
+
+	</div>
 
 
-		<iframe
-			id="frameB"
-			frameborder="0"
-			scrolling="no"
-		></iframe>
 
-</div>
 <!-- 	<h1> I am the Info Screen</h1>
 	<iframe id="frame" frameborder="0"></iframe> -->
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">

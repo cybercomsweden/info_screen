@@ -115,6 +115,14 @@ var domHolder = new function(){
 
 socket.on('connection', function(){console.log("connected")});
 
+// function updateClock(timeData){
+// 	io.emit('clock update', timeData);
+//}
+
+socket.on('clock update', function(clockData){
+	$('#time').text(clockData.time);
+	$('#date').text(clockData.date);
+});
 
 socket.on('page slide', function(data){
 	var animLength = 2000;

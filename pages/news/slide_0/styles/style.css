@@ -1,14 +1,55 @@
-body {
-	background-image: url("../images/ocean.jpg");
+* {
+	box-sizing:border-box;
 }
 
-h1 {
-	color: red;
-	margin: 25px;
+
+h1, h2, p {
+	font-family: verdana;
+	color: white;
 }
+
 
 img {
 	width: 500px;
 	height: auto;
 	overflow: hidden;
+
+}
+
+.container {
+	height: 700px;
+	width: 1200px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+h1 {
+	margin-left:70px;
+}
+
+img {
+	float: left;
+	margin: 40px;
+}
+p {
+	width: 500px;
+	margin: 30px;
+	margin-top: 60px;
+	float: left;
+}
+
+#content {
+	padding: 20px;
+}
+
+#backdrop {
+	background-color: black;
+	opacity: 0.6;
+	border-radius: 10px;
 }

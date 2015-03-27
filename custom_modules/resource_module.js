@@ -5,15 +5,15 @@ var profile = [
 		},
 		{
 			color: 'rgb(113, 49, 136)', // purple
-			background: 'http://lorempixel.com/1920/1080/technics'
+			background: 'http://lorempixel.com/1920/1080/animals'
 		},
 		{
 			color: 'rgb(1, 85, 153)', // blue
-			background: 'http://lorempixel.com/1920/1080/nature'
+			background: 'http://lorempixel.com/1920/1080/cats'
 		},
 		{
 			color: 'rgb(170, 179, 0)', //green
-			background: 'http://lorempixel.com/1920/1080/animals'
+			background: 'http://lorempixel.com/1920/1080/technics'
 		}
 	];
 

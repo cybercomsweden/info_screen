@@ -1,3 +1,4 @@
+@font-face {font-family: Caecilia; src: url(CaeciliaLTStd-Bold.otf); }
 * {
 		/* Make padding WORK*/
 	box-sizing: border-box;   
@@ -41,7 +42,6 @@ iframe {
 
 .frameContainer {
 	position: absolute;
-	background-color: gray;
 	height: 85%;
 	width: 100%;
 	float: left;
@@ -107,7 +107,9 @@ iframe {
     margin-top: 6px;
     height: 3.6em; /* exactly three lines */
     overflow: hidden;
-
+}
+.cybercomFont {
+	font-family: Caecilia;
 }
 .newsImage {
     height:100%;

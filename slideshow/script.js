@@ -74,12 +74,18 @@ var domHolder = new function(){
 		return activeHolder[sign].banner;
 	}
 
+//Bryt ut funktioner!
 	this.newSource = function(data, frame){
 		if(frame){
-			activeHolder[frame].frame.attr('src', data.page);
+			if(data === null){
+				// CLEAR FRAME
+				activeHolder[frame].frame.attr('src', '');
+				return;
+			}
 
-			console.log("data.news");
-			console.log(data.news);
+			// FIRST TIME / SPECIFIC
+			activeHolder[frame].frame.attr('src', data.page);
+			activeHolder[frame].container.css("background-image", "url(" + data.profile.background + ")");
 
 			activeHolder[frame].titleLeft.text(data.news[0].title);
 			activeHolder[frame].textLeft.text(data.news[0].text);
@@ -89,8 +95,11 @@ var domHolder = new function(){
 			activeHolder[frame].textRight.text(data.news[1].text);
 			activeHolder[frame].thumbnailRight.attr('src', data.news[1].thumbnail);
 			return;
+		
 		}
-
+		console.log(data.profile.background);
+		// NEW CONTENT
+		activeHolder[NOT_ACTIVE].container.css("background-image", "url(" + data.profile.background + ")");
 		activeHolder[NOT_ACTIVE].frame.attr('src', data.page);
 
 		activeHolder[NOT_ACTIVE].titleLeft.text(data.news[0].title);
@@ -110,16 +119,13 @@ socket.on('connection', function(){console.log("connected")});
 socket.on('page slide', function(data){
 	var animLength = 2000;
 
-	console.log("here comes data:");
-	console.log(data.news[0]);
-	console.log(data.news[1]);
-
 	// DataChange, todo-time
 	domHolder.newSource(data);
 
-	// COLORS
-	$('#clock').animate({'background-color': data.color}, animLength);
-	$('#slidingNews').animate({'background-color': data.color}, animLength);
+	// Colors & Profile
+	console.log()
+	$('#clock').animate({'background-color': data.profile.color}, animLength);
+	$('#slidingNews').animate({'background-color': data.profile.color}, animLength);
 
 
 	// SLIDES
@@ -127,7 +133,7 @@ socket.on('page slide', function(data){
 	domHolder.getContainer('not-active')	.animate({'margin-left': '-=100%'}, animLength, 'easeInOutExpo',
 		function(){
 			domHolder.getContainer('not-active').css('margin-left', '100%');
-			domHolder.newSource('', 'not-active');
+			domHolder.newSource(null, 'not-active');
 	});
 	domHolder.notifyNewActive();
 
@@ -143,11 +149,8 @@ socket.on('page slide', function(data){
 });
 
 socket.on('first slide', function(data){
-	// console.log("here comes data:");
-	// console.log(data);
-	// console.log(data.news);
-	$('#clock').css('background-color', data.color);
-	$('#slidingNews').css('background-color', data.color);
+	$('#clock').css('background-color', data.profile.color);
+	$('#slidingNews').css('background-color', data.profile.color);
 	domHolder.newSource(data, 'active');
 });
 

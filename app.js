@@ -25,7 +25,7 @@ io.on('connection', function(socket){
 	socket.emit('first slide', {
 				page: pager.currentSlideRef().path,
 				news: resources.currentNews(),
-				color: resources.currentColor()
+				profile: resources.currentProfile()
 			}
 		);
 });
@@ -34,7 +34,7 @@ function emitNextSlide(){
 	io.emit('page slide', {
 			page: pager.nextSlideRef().path,
 			news: resources.nextNews(),
-			color: resources.nextColor()
+			profile: resources.nextProfile()
 		}
 	);
 }

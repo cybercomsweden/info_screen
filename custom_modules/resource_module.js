@@ -1,61 +1,64 @@
-
-var colors = [
-		'rgb(237, 123, 1)', //orange
-		'rgb(113, 49, 136)', // purple
-		'rgb(1, 85, 153)', // blue
-		'rgb(170, 179, 0)' //green
+var profile = [
+		{
+			color: 'rgb(237, 123, 1)', //orange
+			background: 'http://lorempixel.com/1920/1080/abstract'
+		},
+		{
+			color: 'rgb(113, 49, 136)', // purple
+			background: 'http://lorempixel.com/1920/1080/technics'
+		},
+		{
+			color: 'rgb(1, 85, 153)', // blue
+			background: 'http://lorempixel.com/1920/1080/nature'
+		},
+		{
+			color: 'rgb(170, 179, 0)', //green
+			background: 'http://lorempixel.com/1920/1080/animals'
+		}
 	];
 
 var mockNews = [
 		[{
-			title: "I am the first news post",
-			text: "I have a lot of important things to say. Things will be amazing because of my efforts!",
-			thumbnail: "http://beerhold.it/100/100"
+			title: "Cybercom får ny Informations portal",
+			text: "Niklas har under en tid utvecklat en portal som kommer revolutionera informationen på företaget!",
+			thumbnail: "https://inside.cybercom.com/Global/N/niwel1/image/10352823_10152804657123385_8001097518317182270_n.jpg"
 		},
 		{
-			title: "I am the second news post",
-			text: "I have a lot of important things to say. Things will be amazing because of my efforts!",
-			thumbnail: "http://beerhold.it/200/200"
+			title: "Octoberfest",
+			text: "Förberedleserna inför årets Octoberfest har redan börjat. Vill du vara med och planera? Hör av dig till polisen nu!",
+			thumbnail: "http://beerhold.it/600/600.jpg"
 		}],
 		[{
-			title: "I am the third news post",
-			text: "I have a lot of important things to say. Things will be amazing because of my efforts!",
-			thumbnail: "http://beerhold.it/300/300"
+			title: "Design hjälper Cybercom in i framtiden",
+			text: "Design har tagit fram koncept och förslag till storföretag som kommer kunna landa många kunder inom en snar framtid.",
+			thumbnail: "https://inside.cybercom.com/Global/A/anben1/image/profilbild.jpg"
 		},
 		{
-			title: "I am the fourth news post",
-			text: "I have a lot of important things to say. Things will be amazing because of my efforts!",
-			thumbnail: "http://beerhold.it/400/400"
+			title: "Innovation Labs får ett ansiktslyft",
+			text: "Cybercoms Innovation Labs håller på att leva upp med Balthazar i tyglarna. Balthazar själv tror inte på teknik, men han tror på att hjälpa andra.",
+			thumbnail: "https://inside.cybercom.com/Global/B/balan1/image/BalthazarLang240x300.jpg"
 		}],	
 		[{
-			title: "I am the fifth news post",
-			text: "I have a lot of important things to say. Things will be amazing because of my efforts!",
-			thumbnail: "http://beerhold.it/500/500"
+			title: "När kommer ABW'n",
+			text: "Den annonserade och numera efterlängtade ABW'n lyser med sin frånvaro, och inte nog med det. Ansvariges, Hanne, bild ser dum ut i insides kvadratiska profilbilder.",
+			thumbnail: "https://inside.cybercom.com/Global/H/hapos1/image/Joblink%20bild%20Hanne.jpg"
 		},
 		{
-			title: "I am the sixth news post",
-			text: "I have a lot of important things to say. Things will be amazing because of my efforts!",
-			thumbnail: "http://beerhold.it/600/600"
+			title: "Var glad på jobbet, men inte för glad",
+			text: "Joakim Sällström inspirerar och muntrar upp sin omgivning, men frågan är om han är för glad. Studier pågår för att undersöka ev. negativa påverkan.",
+			thumbnail: "https://inside.cybercom.com/Global/J/josl/image/josl.jpg"
 		}]
 	];
 
-// console.log("here comes stuff");
-// console.log(mockNews[0][0]);
-// console.log(mockNews[0][1]);
-// console.log(mockNews[1][0]);
-// console.log(mockNews[1][1]);
-// console.log(mockNews[2][0]);
-// console.log(mockNews[2][1]);
-
-var currentColor = 0;
+var currentProfile = 0;
 var currentNews = 0;
 
-exports.nextColor = function(){
-	if(++currentColor == colors.length) currentColor = 0;
-	return colors[currentColor];
+exports.nextProfile = function(){
+	if(++currentProfile == profile.length) currentProfile = 0;
+	return profile[currentProfile];
 }
-exports.currentColor = function(){
-	return colors[currentColor];
+exports.currentProfile = function(){
+	return profile[currentProfile];
 }
 
 

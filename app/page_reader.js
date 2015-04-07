@@ -27,10 +27,11 @@ function readingDone(){
 }
 
 exports.readPages = function(root){
+	console.log("root: " + root);
 	if(exports.callback != null){
 		exports.callback('Reading Pages');
 	}
-	var absPath = root + "/pages";
+	var absPath = root + "/public/pages";
 	fs.readdir(absPath, function(err, dir){
 		for(var i = 0; i < dir.length; i++){
 			if(dir[i].charAt(0) != '.'){
@@ -69,8 +70,10 @@ function createPageObject(ref, category){
 
 		NbrOfFilesRead++;
 
-		var relPath = ref.substr(ref.indexOf("/pages/"));
+		var relPath = ref.substr(ref.indexOf("/info_screen") + 13); // remove path until after info_screen
 		pageObject = {path: relPath};
+		console.log('relPath: ' + relPath);
+		console.log('ref: ' + ref);
 		pageObject.category = category;
 
 		var lines = data.toString().split('\n');

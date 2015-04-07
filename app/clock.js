@@ -1,9 +1,15 @@
  var timeHolder;
  var callback;
- var weekdays = ['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag'];
+ var weekdays = ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag'];
  var months = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
 
+ var timeString;
+ var dateString;
+
  function time(){
+    timeString = "";
+    dateString = "";
+
  	var now =new Date();
     var h=now.getHours();
     var m=now.getMinutes();
@@ -17,12 +23,16 @@
     var timeString = ""+ h + ":" + m;
     var dateString = ""+ weekdays[wDay] + " " + mDay + ", " + months[month];
 
-    if(callback){callback({time: timeString, date: dateString})}
+    return {time: timeString, date: dateString};
+ 	}
+
+function timeLoop(){
+    var timeData = time();
+    if(callback){callback()}
 
     timeHolder = setTimeout(function(){ time() },20000); //every 20 seconds
-	timeString = "";
-	dateString = "";
- 	}
+
+}
 
  function checkTime(i) {
     if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
@@ -40,4 +50,9 @@ exports.stopClock = function(){
 exports.setCallback = function(cb){
 	callback = cb;
 }
+
+exports.getTime = function(){
+    
+    return time();
+};
 

@@ -1,19 +1,5 @@
 var socket = io();
 
-var colors = new function(){
-	var colors = [
-		'rgb(113, 49, 136)', // purple
-		'rgb(1, 85, 153)', // blue
-		'rgb(170, 179, 0)', //green
-		'rgb(237, 123, 1)' //orange
-	];
-	
-	this.next = function(){
-		return colors[currentColor];
-	}
-}
-
-// $('#clock').css('background-color', colors.orangeRGB);
 titleRight: $('#newsTitleRightA').text('Bajs');
 
 var domHolder = new function(){
@@ -97,7 +83,6 @@ var domHolder = new function(){
 			return;
 		
 		}
-		console.log(data.profile.background);
 		// NEW CONTENT
 		activeHolder[NOT_ACTIVE].container.css("background-image", "url(" + data.profile.background + ")");
 		activeHolder[NOT_ACTIVE].frame.attr('src', data.page);
@@ -124,7 +109,7 @@ socket.on('clock update', function(clockData){
 	$('#date').text(clockData.date);
 });
 
-socket.on('page slide', function(data){
+socket.on('next slide', function(data){
 	var animLength = 2000;
 
 	// DataChange, todo-time

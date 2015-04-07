@@ -4,16 +4,16 @@ var profile = [
 			background: 'http://lorempixel.com/1920/1080/abstract'
 		},
 		{
-			color: 'rgb(113, 49, 136)', // purple
-			background: 'http://lorempixel.com/1920/1080/animals'
-		},
-		{
 			color: 'rgb(1, 85, 153)', // blue
 			background: 'http://lorempixel.com/1920/1080/cats'
 		},
 		{
 			color: 'rgb(170, 179, 0)', //green
 			background: 'http://lorempixel.com/1920/1080/technics'
+		},
+		{
+			color: 'rgb(113, 49, 136)', // purple
+			background: 'http://lorempixel.com/1920/1080/animals'
 		}
 	];
 

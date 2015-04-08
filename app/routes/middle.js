@@ -12,4 +12,8 @@ module.exports = function(express, app){
 		res.sendFile(root + '/views/slideshow.html');
 	});
 
+		app.get('/admin', function(req, res){
+		res.sendFile(root + '/views/admin.html');
+	});
+
 }

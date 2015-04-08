@@ -1,13 +1,17 @@
 # Cybercom Information Screen
-An info screen using node and html technologies for internal use.
-{Will be extended with more features to become an information portal aswell}
+An information portal using node and html technologies for internal use.
+The portal will have acces to specialized websites which will also be available in a slideshow feature.
 
 This is a Node based project. To be able to run this you'll need to install "Node.js" and its package manager, "npm". Because of the .ignore-file the modules needed for projects are discarded in pull/push -s. So, to run this you need to install dependencies with npm and run with node.js.
 
-The slides are fully functional webpages which you put in the `slides/slide_x`-folder. These can have styling, javascript and resources.
+The slides are fully functional webpages which you put in the `public/pages/{category}/slide_x`-folder. These can have styling, javascript and resources.
 
 
 How To Run Server:
+** NEW **
+To run the server you will need to run a MongoDB database. It is available through apt-get and maybe even npm. When installed you can run it simply by using the `mongod` command.
+** /NEW **
+
 - move to the directory of the app.js / root
 - use `npm install` to install dependencies descriped in package.json.
 - run the server with `node app.js`

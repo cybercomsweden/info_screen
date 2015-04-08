@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="cyberPortalAdmin">
+<head>
+	<title>Cyber Portal - Admin Page</title>
+
+	<meta charset="utf-8">
+
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular 1.2.4 -->
+    <script src="public/js/controllers/kvp.js"></script>
+    <script src="public/js/controllers/newspost.js"></script>
+    <script src="public/js/controllers/vehicle.js"></script>
+    <script src="public/js/services/kvps.js"></script>
+    <script src="public/js/services/newsposts.js"></script>
+    <script src="public/js/services/vehicles.js"></script>
+    <script src="public/js/logic/admin.js"></script>
+</head>
+<body >
+
+	<h1> Welcome Admin </h1>
+
+	<div id="kvpContainer" ng-controller="kvpController">
+		
+		<h2>Key Value Pairs [{{ kvps.length }}] </h2>
+
+		<ul>
+			<li ng-repeat="kvp in kvps">
+				<p> {{ kvp.key }} has value {{ kvp.value }} </p>
+			</li>
+		</ul>
+
+		<p>Add new key-value-pair</p>
+		<input type="text" placeholder="Enter a key..." ng-model="kvpData.key"/> <!-- todo, model -->
+		<input type="text" placeholder="Enter a value..." ng-model="kvpData.value"/>
+		<button type="submit" ng-click="createKvp()">Add</button>
+
+	</div>
+	<div id="vehicleContainer" ng-controller="vehicleController">
+		
+		<h2>Vehicles [{{ vehicles.length }}]</h2>
+
+		<ul>
+			<li ng-repeat="vehicle in vehicles">
+				<p> Vehicle model {{ vehicle.model }} with plate {{ vehicle.plate }} is {{ vehicle.color }} </p>
+			</li>
+		</ul>
+
+		<p>Add new vehicle</p>
+		<input type="text" placeholder="Enter a model..." ng-model="vehicleData.model"/>
+		<input type="text" placeholder="Enter reg-plate..." ng-model="vehicleData.plate"/>
+		<input type="text" placeholder="Enter colour..." ng-model="vehicleData.color"/>
+		<button type="submit"  ng-click="createVehicle()">Add</button>
+
+	</div>
+	<div id="newsContainer" ng-controller="newspostController">
+		
+		<h2>News [{{ newsposts.length }}]</h2>
+
+		<ul>
+			<li ng-repeat="newspost in newsposts">
+				<p> <b>{{ newspost.title }}</b>, written by `{{ newspost.author }}` says: {{ newspost.text }} <img ng-src="{{ newspost.imgRef }}" height="100px" width="auto"></p>
+			</li>
+		</ul>
+
+		<p>Add new news</p>
+		<input type="text" placeholder="Enter a headline..." ng-model="newsData.title"/>
+		<input type="text" placeholder="Enter the author..." ng-model="newsData.author"/>
+		<input type="text" placeholder="Enter a news text..." ng-model="newsData.text"/>
+		<input type="text" placeholder="Enter an url for image..." ng-model="newsData.imgRef" on-err-src="http://google.com/favicon.ico"/>
+		<button type="submit" ng-click="createNewspost()">Add</button>
+
+	</div>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+</body>
+</html>

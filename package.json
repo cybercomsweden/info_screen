@@ -4,6 +4,10 @@
   "description": "Info Screen for displaying news and info at Cybercom Malmö",
   "dependencies": {
     "express": "latest",
+    "mongoose": "^4.0.1",
+    "morgan"     : "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2",
     "socket.io": "latest"
   }
 }

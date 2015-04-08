@@ -27,7 +27,6 @@ function readingDone(){
 }
 
 exports.readPages = function(root){
-	console.log("root: " + root);
 	if(exports.callback != null){
 		exports.callback('Reading Pages');
 	}
@@ -72,8 +71,6 @@ function createPageObject(ref, category){
 
 		var relPath = ref.substr(ref.indexOf("/info_screen") + 13); // remove path until after info_screen
 		pageObject = {path: relPath};
-		console.log('relPath: ' + relPath);
-		console.log('ref: ' + ref);
 		pageObject.category = category;
 
 		var lines = data.toString().split('\n');

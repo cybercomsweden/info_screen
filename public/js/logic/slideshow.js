@@ -71,38 +71,36 @@ var domHolder = new function(){
 
 			// FIRST TIME / SPECIFIC
 			activeHolder[frame].frame.attr('src', data.page);
-			activeHolder[frame].container.css("background-image", "url(" + data.profile.background + ")");
+			activeHolder[frame].container.css("background-image", "url(" + data.background.imgRef + ")");
+
+			console.log(data.news);
 
 			activeHolder[frame].titleLeft.text(data.news[0].title);
 			activeHolder[frame].textLeft.text(data.news[0].text);
-			activeHolder[frame].thumbnailLeft.attr('src', data.news[0].thumbnail);
+			activeHolder[frame].thumbnailLeft.attr('src', data.news[0].imgRef);
 
 			activeHolder[frame].titleRight.text(data.news[1].title);
 			activeHolder[frame].textRight.text(data.news[1].text);
-			activeHolder[frame].thumbnailRight.attr('src', data.news[1].thumbnail);
+			activeHolder[frame].thumbnailRight.attr('src', data.news[1].imgRef);
 			return;
 		
 		}
 		// NEW CONTENT
-		activeHolder[NOT_ACTIVE].container.css("background-image", "url(" + data.profile.background + ")");
+		activeHolder[NOT_ACTIVE].container.css("background-image", "url(" + data.background.imgRef + ")");
 		activeHolder[NOT_ACTIVE].frame.attr('src', data.page);
 
 		activeHolder[NOT_ACTIVE].titleLeft.text(data.news[0].title);
 		activeHolder[NOT_ACTIVE].textLeft.text(data.news[0].text);
-		activeHolder[NOT_ACTIVE].thumbnailLeft.attr('src', data.news[0].thumbnail);
+		activeHolder[NOT_ACTIVE].thumbnailLeft.attr('src', data.news[0].imgRef);
 
 		activeHolder[NOT_ACTIVE].titleRight.text(data.news[1].title);
 		activeHolder[NOT_ACTIVE].textRight.text(data.news[1].text);
-		activeHolder[NOT_ACTIVE].thumbnailRight.attr('src', data.news[1].thumbnail);
+		activeHolder[NOT_ACTIVE].thumbnailRight.attr('src', data.news[1].imgRef);
 	}
 }
 
 
 socket.on('connection', function(){console.log("connected")});
-
-// function updateClock(timeData){
-// 	io.emit('clock update', timeData);
-//}
 
 socket.on('clock update', function(clockData){
 	$('#time').text(clockData.time);
@@ -116,9 +114,8 @@ socket.on('next slide', function(data){
 	domHolder.newSource(data);
 
 	// Colors & Profile
-	console.log()
-	$('#clock').animate({'background-color': data.profile.color}, animLength);
-	$('#slidingNews').animate({'background-color': data.profile.color}, animLength);
+	$('#clock').animate({'background-color': data.color.colorRGB}, animLength);
+	$('#slidingNews').animate({'background-color': data.color.colorRGB}, animLength);
 
 
 	// SLIDES
@@ -135,15 +132,14 @@ socket.on('next slide', function(data){
 	domHolder.getBanner('not-active')	.animate({'margin-left': '+=100%'}, animLength, 'easeInOutExpo',
 		function (){
 			domHolder.getBanner('not-active').css('margin-left', '-100%');
-			// domHolder.newSource('', 'not-active'); utförs redan en gång
 	});
 
 
 });
 
 socket.on('first slide', function(data){
-	$('#clock').css('background-color', data.profile.color);
-	$('#slidingNews').css('background-color', data.profile.color);
+	$('#clock').css('background-color', data.color.colorRGB);
+	$('#slidingNews').css('background-color', data.color.colorRGB);
 	domHolder.newSource(data, 'active');
 });
 

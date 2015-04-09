@@ -19,7 +19,7 @@ app.use(methodOverride());
 require('./app/routes/middle')(express, app);
 require('./app/routes/rest_api')(app);
 
-require('./app/app_logic')(io);
+require('./app/server_logic')(io);
 
 http.listen(3000, function(){
 	console.log('listening at port 3000');

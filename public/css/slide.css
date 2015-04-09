@@ -1,4 +1,4 @@
-@font-face {font-family: Caecilia; src: url(CaeciliaLTStd-Bold.otf); }
+@font-face {font-family: Caecilia; src: url(public/resources/CaeciliaLTStd-Bold.otf); }
 * {
 		/* Make padding WORK*/
 	box-sizing: border-box;   

@@ -1,8 +1,5 @@
-// js/services/todos.js
 angular.module('newspostService', [])
 
-    // super simple service
-    // each function returns a promise object 
     .factory('Newspost', function($http) {
         return {
             get : function() {

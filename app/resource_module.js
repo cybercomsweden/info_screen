@@ -39,7 +39,7 @@ var mockNews = [
 			thumbnail: "https://inside.cybercom.com/Global/B/balan1/image/BalthazarLang240x300.jpg"
 		}],	
 		[{
-			title: "När kommer ABW'n",
+			title: "När kommer ABW'n?",
 			text: "Den annonserade och numera efterlängtade ABW'n lyser med sin frånvaro, och inte nog med det. Ansvariges, Hanne, bild ser dum ut i insides kvadratiska profilbilder.",
 			thumbnail: "https://inside.cybercom.com/Global/H/hapos1/image/Joblink%20bild%20Hanne.jpg"
 		},

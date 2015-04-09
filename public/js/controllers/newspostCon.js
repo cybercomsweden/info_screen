@@ -1,7 +1,6 @@
+angular.module('newspostController', []) //module to load into angular-application
 
-angular.module('newspostController', []) // Dåligt att ha samma namn? Vad ska man ha?
-
-    .controller('newspostController', function($scope, $http, Newspost) {
+    .controller('newspostController', function($scope, $http, Newspost) { //controller loaded by angular in html
          $scope.newsData = {};
 
          // on page load()
@@ -19,12 +18,12 @@ angular.module('newspostController', []) // Dåligt att ha samma namn? Vad ska m
         };
 
         // // DELETE ==================================================================
-        // // delete a todo after checking it
-        // $scope.deleteTodo = function(id) {
-        //     Todos.delete(id)
-        //         // if successful creation, call our get function to get all the new todos
-        //         .success(function(data) {
-        //             $scope.todos = data; // assign our new list of todos
-        //         });
-        // };
+        $scope.removeNewspost = function(id) {
+            Newspost.delete(id)
+                .success(function(data) {
+                    console.log('success');
+                    console.log(data);
+                    $scope.newsposts = data;
+                });
+        };
     });

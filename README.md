@@ -15,7 +15,7 @@ In order to use the server you'll need the tools Node, its package manager and a
 ### Node
 Node and NPM (Node Package Manager) need to be installed to use this server (you figure it out- google it!). When this is installed you start the server by:
 * __Install dependencies__ by `cd` into the root folder and running `npm install`
-* __Run server_ by running the `node server.js` command. If the port specified in the `server.js file` is 80 (or something else heavily used) then you will need to run as `sudo`.
+* __Run server__ by running the `node server.js` command. If the port specified in the `server.js file` is 80 (or something else heavily used) then you will need to run as `sudo`.
 
 
 ### MongoDB
@@ -24,5 +24,5 @@ Possibly an init-database-file will be appended at a later time.
 * __Just install Mongo__
 * __Start__ the server by running the command `mongod`
 
-```
+#### Try it!
 __To view in browser__ go to url `localhost:3000` or just `localhost` if using port 80.

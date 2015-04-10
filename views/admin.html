@@ -16,7 +16,6 @@
     <script src="public/js/logic/admin.js"></script>
 </head>
 <body >
-
 	<h1> Welcome Admin </h1>
 
 
@@ -24,13 +23,13 @@
 		
 		<h2>Backgrounds [{{ backgrounds.length }}]</h2>
 
-		<span>
-			<div ng-repeat="background in backgrounds">
-				<button type="submit" ng-click="removeBackground(background._id)">Remove</button>
+		<div>
+			<span class="backs" ng-repeat="background in backgrounds" >
 				<img ng-src="{{ background.imgRef }}" height="120" width="120">
-				<p>{{ background.title }} in {{ background.colorTheme }}</p>
-			</div>
-		</span>
+				
+				<p>{{ background.title }} in {{ background.colorTheme }} <button type="submit" ng-click="removeBackground(background._id)">Remove</button> </p>
+			</span>
+		</div>
 			
 
 		<p>Add new background</p>

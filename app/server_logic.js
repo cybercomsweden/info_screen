@@ -20,16 +20,16 @@ module.exports = function(io){
 
 		socket.emit('clock update', clock.getTime());
 
-		setInterval(emitNextSlide, 13000);
 	});
 
-	// -- Do Stuff! --
 	clock.startClock();
 	clock.setCallback(updateClientClock);
 	pager.readPages(root);
 	pager.readingDone = function(){
 		setTimeout(feed.init, 300); // Mongo is too slow!
 
+	setInterval(emitNextSlide, 13000);
+	// -- Do Stuff! --
 		// No connection allowed until set up!
 	}
 

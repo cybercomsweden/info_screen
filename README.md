@@ -24,7 +24,7 @@ Possibly an init-database-file will be appended at a later time.
 * __Just install Mongo__
 * __Start__ the server by running the command `mongod`
 
-```
+
 __To view in browser__ go to url `localhost:3000` or just `localhost` if using port 80.
 
 ## Structure

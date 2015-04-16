@@ -1,10 +1,9 @@
 var fs = require('fs');
-var ContentPage = require('./models/contentPage');
+var mc = require('../models/modelController');
+var ContentPage = mc.getContentpage();
 var mongoose = require('mongoose');
 
-mongoose.connection.collections['contentpages'].drop( function(err) {
-    console.log('contentpages collection dropped, ready for new collection');
-});
+mongoose.connection.collections['contentpages'].drop();
 
 var holder = [];
 var NbrOfPages = 0;
@@ -35,9 +34,12 @@ function readDir(absPath, category){
 	fs.readdir(absPath, function(err, dir){
 		if(err) console.error(err);
 		for(var i = 0; i < dir.length; i++){
-			if(dir[i].indexOf('slide') > -1){
+			if(dir[i].indexOf('.DS_Store') > -1){
+				// MAC OS X file
+			}
+			else {
 				NbrOfPages++;
-				var absPagePath = absPath + "/" + dir[i] + '/page.html';
+				var absPagePath = absPath + "/" + dir[i] + '/index.html';
 				createPageObject(absPagePath, category);
 			}
 		}
@@ -74,7 +76,6 @@ function createPageObject(ref, category){
 	        colorTheme : "unassigned",
 	        pageRef : relPath
 		});
-
 		if(NbrOfPages == NbrOfFilesRead)
 			readingDone()
 	});

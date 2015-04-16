@@ -1,6 +1,6 @@
     var mongoose = require('mongoose');
 
-    module.exports = mongoose.model('ContentPage', {
+    module.exports = mongoose.model('Contentpage', {
         title : String,
         category : String,
         colorTheme : String,

@@ -1,9 +1,9 @@
 module.exports = function(io){
 
-	var pager = require('./page_reader');
-	var clock = require('./clock');
-	var root = __dirname.replace('/app', '');
-	var feed = require('./slide_feeder');
+	var pager = require('../modules/page_reader');
+	var clock = require('../modules/clock');
+	var root = __dirname.replace('/app/logic', '');
+	var feed = require('../modules/slide_feeder');
 
 	function emitNextSlide(){
 		io.emit('next slide', feed.nextSlide());
@@ -26,13 +26,9 @@ module.exports = function(io){
 	clock.setCallback(updateClientClock);
 	pager.readPages(root);
 	pager.readingDone = function(){
-		setTimeout(feed.init, 300); // Mongo is too slow!
+		setTimeout(feed.init, 300); // Mongo is too slow so we slow down Node a bit!
 
 	setInterval(emitNextSlide, 13000);
-	// -- Do Stuff! --
-		// No connection allowed until set up!
+
 	}
-
-
-
 }

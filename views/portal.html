@@ -4,14 +4,48 @@
 	<title>I am a Info Screen</title>
 </head>
 <body>
-<div class="container">
+<div class="container" ng-app="cyberPortalMain">
 
 	<h1> This will be the portal page </h1>
 
 	<p>Slideshow <a href="../slideshow">here!</a> </p>
 	<p>Admin / Debug <a href="../admin">here!</a> </p>
 
+
+	<div id="contentpages" ng-controller="contentpageController" ng-init="fetchAllPagesInCategories()">
+
+		<h2> Welcome to Cyber Portal </h2> 
+			<div  ng-repeat="(category, pages) in contentpages">
+			
+			<h3>{{ category }}</h3>
+			<div ng-repeat="page in pages" width="20%">
+				
+				<div class="pages">
+					<iframe ng-src="{{ page.pageRef }}" src="{{ page.pageRef }}" height="200px" width=" 250px"></iframe>
+					<a ng-href="{{ page.pageRef }}">
+						<p>{{ page.title }}</p>
+					</a>
+				</div>
+			</div>
+
+
+			</div>
+
+	</div>
+
 </div>
-    <script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+
+    <script src="public/js/controllers/newspostCon.js"></script>
+    <script src="public/js/controllers/backgroundCon.js"></script>
+    <script src="public/js/controllers/contentpageCon.js"></script>
+    <script src="public/js/services/backgroundSer.js"></script>
+    <script src="public/js/services/contentpageSer.js"></script>
+    <script src="public/js/services/newspostSer.js"></script>
+
+    
+    <script src="public/js/logic/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/css/portal.css">
 </body>
 </html>

@@ -10,8 +10,11 @@
 
     <script src="public/js/controllers/newspostCon.js"></script>
     <script src="public/js/controllers/backgroundCon.js"></script>
+    <script src="public/js/controllers/contentpageCon.js"></script>
     <script src="public/js/services/backgroundSer.js"></script>
+    <script src="public/js/services/contentpageSer.js"></script>
     <script src="public/js/services/newspostSer.js"></script>
+
     
     <script src="public/js/logic/admin.js"></script>
 </head>
@@ -23,20 +26,37 @@
 		
 		<h2>Backgrounds [{{ backgrounds.length }}]</h2>
 
-		<div>
 			<span class="backs" ng-repeat="background in backgrounds" >
 				<img ng-src="{{ background.imgRef }}" height="120" width="120">
 				
 				<p>{{ background.title }} in {{ background.colorTheme }} <button type="submit" ng-click="removeBackground(background._id)">Remove</button> </p>
 			</span>
-		</div>
-			
 
 		<p>Add new background</p>
 		<input type="text" placeholder="Enter title..." ng-model="backgroundData.title"/>
 		<input type="text" placeholder="Enter color-theme" ng-model="backgroundData.colorTheme"/>
 		<input type="text" placeholder="Enter a imgRef..." ng-model="backgroundData.imgRef"/>
 		<button type="submit" ng-click="createBackground()">Add</button>
+
+	</div>
+
+	<div id="contentpages" ng-controller="contentpageController" ng-init="fetchAllPages()">
+
+		<h2>Content Pages [{{ contentpages.length }}]</h2> 
+
+			<div class="pages" ng-repeat="contentpage in contentpages" >
+				<iframe ng-src="{{ contentpage.pageRef }}" height="200px" width=" 250px"></iframe>
+			<a ng-href="{{ contentpage.pageRef }}">
+				<p>{{ contentpage.title }} in {{ contentpage.colorTheme }}
+			</a>
+			</div>
+
+			<p>Add new Page</p>
+		<input type="text" placeholder="Enter title..." ng-model="contentpageData.title"/>
+		<input type="text" placeholder="Enter category" ng-model="contentpageData.category"/>
+		<input type="text" placeholder="Enter a theme..." ng-model="contentpageData.colorTheme"/>
+		<input type="text" placeholder="Enter a url..." ng-model="contentpageData.pageRef"/>
+		<button type="submit" ng-click="createContentpage()">Add</button>
 
 	</div>
 
@@ -50,8 +70,12 @@
 
 		<ul>
 			<li ng-repeat="newspost in newsposts">
-			<button type="submit" ng-click="removeNewspost(newspost._id)">Remove</button><b> {{ newspost.title }}</b>, written by `{{ newspost.author }}`:<br> {{ newspost.text }} 
-			<!-- <img ng-src="{{newspost.imgRef}}" height="120" width="120"> -->
+			<button type="submit" ng-click="removeNewspost(newspost._id)">Remove</button>
+<p>
+	<b> {{ newspost.title }}</b>, written by `{{ newspost.author }}`:<br> {{ newspost.text }} 
+</p>
+			
+			<img ng-src="{{newspost.imgRef}}" height="120" width="120">
 			</li>
 		</ul>
 
@@ -64,5 +88,7 @@
 
 	</div>
     <script src="http://code.jquery.com/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/css/admin.css">
+
 </body>
 </html>

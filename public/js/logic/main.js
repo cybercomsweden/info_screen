@@ -1,6 +1,5 @@
-// ANGULAR =======================
-// ng-app="cyberPortalAdmin"
-angular.module('cyberPortalAdmin',
+// Portal
+angular.module('cyberPortalMain',
 	[
 	'newspostController',
 	'newspostService',
@@ -8,5 +7,4 @@ angular.module('cyberPortalAdmin',
 	'backgroundService',
 	'contentpageController',
 	'contentpageService'
-	]
-);
+	]); 

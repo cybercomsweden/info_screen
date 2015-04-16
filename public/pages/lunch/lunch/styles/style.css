@@ -49,3 +49,8 @@ img {
 	opacity: 0.6;
 	border-radius: 10px;
 }
+
+.lunch {
+	width: 50%;
+	display: inline-block;
+}

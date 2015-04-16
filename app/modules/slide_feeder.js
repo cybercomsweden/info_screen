@@ -1,7 +1,9 @@
-var ContentPage = require('./models/contentPage'); //rename "DB_ContentPage" or something?
-var Newspost = require('./models/newspost');
-var Color = require('./models/color');
-var Background = require('./models/background');
+var mc = require('../models/modelController');
+
+var Newspost = mc.getNewspost();
+var Background = mc.getBackground();
+var Contentpage = mc.getContentpage();
+var Color = mc.getColor();
 
 // pages ---------------
 var pageHolder = [];
@@ -58,7 +60,7 @@ function nextPage(){
 }
 
 function initPages(){
-	ContentPage.find(function(err, pages){
+	Contentpage.find(function(err, pages){
 		for(i in pages){
 			pageHolder.push(pages[i]);
 		}

@@ -26,3 +26,50 @@ Possibly an init-database-file will be appended at a later time.
 
 ```
 __To view in browser__ go to url `localhost:3000` or just `localhost` if using port 80.
+
+## Structure
+
+The main script / entry point is the `server.js` file. From there the server uses the files in `app`, `config` and `views`:
+
+### app
+In app we have the actual server logic and features.
+#### logic
+The stuff we want the server to actively 'do'
+#### models
+Models are defined using mongoose and is used to communicate with the Mongo Database. A model is a "json" (ish) object which will get a collection in the database with the same name as the model.
+#### modules
+Custom Resources created and used in this project, such as the clock and reading reading the html-folder-structures.
+#### routes
+This is were Express handles the middleware in the application. Handles the GETs, POSTs etc. Also this is were the rest-api is.
+
+### Config
+Constant values at the moment it just contains the database reference.
+
+### Views
+Views are the applications / webpages that the server will send as a response (see the routes/middle). These can be with or without Angular, up to you.
+
+### Public
+
+In public we have all the files, scripts etc. that the browser on the client side will need access to; css, js, images etc.
+- Backgrounds are photos that can be added to the database and used as backgrounds in slides.
+- CSS is the styling
+- Images, the images
+- resources, other files needed. As of now, a font.
+
+#### JS
+Becasue we are using Angular we have some extra structure and files here.
+
+##### Logic
+With or without Angular, this is were we put functional scripts. In Angular applications we define our modules here.
+
+##### Controllers
+The controllers are the angular- (ng-) controllers used in the html/app. We have these seperated for readability. The controllers get information from the services and handle how the information should be displayed.
+
+##### Services
+The Services fetch data from the server/database. They use simple http rest-api-calls.
+
+#### Pages
+In pages we have a structure of `pages/<category>/<title>/`. In here we place our html file (must be called `index.html` right now) and (probably) any html structure we want to help us design our page. The pages available are somewhat of a template that can be used and duplicated. 
+
+## Our project
+Don't be afraid to change structures and modify. This is created by a total layperson and somethings might be less than optimal ;)

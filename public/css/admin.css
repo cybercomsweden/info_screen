@@ -1,0 +1,16 @@
+.backs {
+	width: 160px;
+	display: inline-block;
+	margin: 20px;
+}
+
+.pages {
+	width: 220px;
+	height: 300px;
+	display: inline-block;
+	margin: 20px;
+}
+
+p {
+	display: inline-block;
+}

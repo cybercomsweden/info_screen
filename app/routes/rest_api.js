@@ -1,9 +1,12 @@
-var Newspost = require('../models/newspost');
-var Background = require('../models/background');
+var mc = require('../models/modelController');
+
+var Newspost = mc.getNewspost();
+var Background = mc.getBackground();
+var Contentpage = mc.getContentpage();
 
 console.log("REST RUNNING [rest_api.js]");
 
-module.exports = function(app){ // Kan brytas ut till en start klass och underklasser senare
+module.exports = function(app){
 
 ////// NEWSPOSTS
     app.get('/api/newsposts', function(req, res) {
@@ -87,6 +90,48 @@ module.exports = function(app){ // Kan brytas ut till en start klass och underkl
                 if (err)
                     res.send(err)
                 res.json(backgrounds);
+            });
+        });
+    });
+
+    ////// CONTENTPAGES
+
+    app.get('/api/contentpages', function(req, res) {
+        Contentpage.find(function(err, contentpages) {
+            res.json(contentpages);
+        });
+    });
+
+    app.post('/api/contentpages', function(req, res) {
+        Contentpage.create({
+            title : req.body.title,
+            category : req.body.category,
+            colorTheme : req.body.colorTheme,
+            pageRef : req.body.pageRef
+        }, function(err, contentpage) {
+            if (err)
+                res.send(err);
+
+            Contentpage.find(function(err, contentpages) {
+                if (err)
+                    res.send(err)
+                res.json(contentpages);
+            });
+        });
+
+    });
+
+    app.delete('/api/contentpages/:contentpage_id', function(req, res) {
+        Contentpage.remove({
+            _id : req.params.contentpage_id
+        }, function(err, contentpage) {
+            if (err)
+                res.send(err);
+
+            Contentpage.find(function(err, contentpages) {
+                if (err)
+                    res.send(err)
+                res.json(contentpages);
             });
         });
     });

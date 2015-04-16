@@ -12,6 +12,8 @@ $(document).ready(function(){
   var lunches = {Monday: [], Tuesday: [], Wednesday: [], Thursday: [], Friday: []};
   var today = new Date().getDay() - 1; // 0 = monday
 
+  $('#title-weekday').append(weekdays[today]);
+
   // STEREO
   $.ajax({
   	url: 'http://stereo-malmo.se/veckans-lunch/', type: 'GET',
@@ -43,11 +45,16 @@ $(document).ready(function(){
   		var div = $(res.responseText).find('.entrytext');
   		var price = div.find('h1').first().html();
   		var openText = div.find('h4').first().html();
-  		var pLunches = div.children('table').find('p');
+      var pLunches = div.children('table').find('td').first().find('p');
+  		// var pLunches = div.children('table').find('p');
+
+      console.log('pLunches');
+      // console.log(pLunches);
   		
   		for(var i = 0; i < 5; i++){
   			var akvarietToday = {id: "rest_akvariet", restaurant: "Akvariet", courses: [], extra: price, open: openText};
-  			var lunch = $(pLunches[i]).html().split('<br>')[1];
+  			var lunch = pLunches.eq(i).html().split('<br>')[1];
+        console.log(lunch);
   			akvarietToday.courses.push(lunch);
   			lunches[weekdays[i]].push(akvarietToday);
   		}
@@ -59,7 +66,6 @@ $(document).ready(function(){
   $.ajax({
   	url: 'http://restaurangp2.se/lunch', type: 'GET',
   	success: function(res) {
-  		console.log("P2");
   		var root = $(res.responseText).find('.main_content_menu');
   		var extraInfo = root.find('.top_info').find('p').eq(1).text();
 
@@ -69,7 +75,6 @@ $(document).ready(function(){
   			var dishes = dayDiv.children('table').children('tbody').children('tr'); // Idioterna har bakat ihop sina divvar!
   			for(var j = 0; j < dishes.length; j++){
   				var dish = dishes.eq(j).find('td').eq(1).text();
-  				console.log("dish: " + dish);
   				p2today.courses.push(dish);
   			}
   			lunches[weekdays[i]].push(p2today);  			
@@ -81,34 +86,44 @@ $(document).ready(function(){
 
 
   function HtmlDecode(html) {
-    	var div = document.createElement("div");
-    	div.innerHTML = html;
-    	return div.childNodes[0].nodeValue;
+    	var p = document.createElement("p");
+    	p.innerHTML = html;
+      return $(p).text();
+    	// return div.childNodes[0].nodeValue; ersätt p med div o gör det med -->> &amp etc.
 	}
 
   function finishedReading(){
   	if(++restaurantsRead == sumOfRestaurants){
+        console.log(lunches[weekdays[today]]);
   			printMenus();
   		}
   }
 
   function printMenus(){
-  	$('#title-weekday').append(weekdays[today]);
+  	$('#loading').remove();
   	var todaysLunches = lunches[weekdays[today]];
   	for(i in todaysLunches){
-
+      var newDiv = $('<div />', {class: 'lunch'});
+      // newDiv.addClass(lunch);
   		var restMenu = todaysLunches[i];
-  		target.append("<h2>"+restMenu.restaurant+"</h2>");
+  		newDiv.append("<h2>"+restMenu.restaurant+"</h2>");
   		if(restMenu.open)
-  			target.append("<p>"+restMenu.open+"</p>");
+  			newDiv.append("<p>"+restMenu.open+"</p>");
   		if(restMenu.extra)
-  			target.append("<p>"+restMenu.extra+"</p>");
-  		target.append('<ul id="'+restMenu.id+'"></ul>');
-  		var menuList = $('#'+restMenu.id);
+  			newDiv.append("<p>"+restMenu.extra+"</p>");
+  		// newDiv.append('<ul id="'+restMenu.id+'"></ul>');
+  		// var menuList = $('#'+restMenu.id);
+      var menuList = $('<ul/>', {id: restMenu.id});
   		var courses = restMenu.courses;
   		for(j in courses){
+        console.log(courses[j]);
+        console.log(HtmlDecode(courses[j]));
   			menuList.append('<li>'+HtmlDecode(courses[j])+'</li>');
   		}
+      console.log(menuList);
+      newDiv.append(menuList);
+      target.append(newDiv);
+      console.log(newDiv);
   	}
   }
 
